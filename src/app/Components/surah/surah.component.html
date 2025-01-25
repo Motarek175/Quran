@@ -1,0 +1,75 @@
+<div class="relative overflow-hidden bg-gray-900">
+  <div class="flex items-center justify-center p-5">
+    <p class="text-2xl md:text-3xl font-bold tracking-tight text-sky-400">
+      نسألكم الدعاء فضلا وليس امرا
+    </p>
+  </div>
+  <div class="info flex place-content-center mb-8">
+    <div class="name">
+      <h2 class="text-4xl font-bold tracking-tight text-sky-400 italic">
+        {{ selectedSurah.name }}
+        <span
+          class="inline-flex items-center justify-center w-15 h-15 rounded-full border text-center"
+          >{{ selectedSurah.number }}
+        </span>
+      </h2>
+    </div>
+  </div>
+</div>
+<div *ngIf="id + 1 == 1">
+  <div class="box mt-10 mb-5 px-5" *ngIf="selectedSurah">
+    <div
+      class="text-2xl text-sky-800 md:text-4xl leading-10 italic mb-5 flex items-center justify-center"
+    >
+      بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+      <span
+        class="inline-flex items-center justify-center w-7 h-7 md:w-10 md:h-10 rounded-full border text-center"
+      >
+        1
+      </span>
+    </div>
+    <div>
+      <div class="ayah italic" *ngIf="selectedSurah">
+        <div
+          class="inline"
+          *ngFor="let ayah of selectedSurah.ayahs; let i = index"
+        >
+          <p class="inline text-xl md:text-2xl" *ngIf="i !== 0">
+            {{ ayah.text }}
+            <span
+              class="inline-flex items-center justify-center w-7 h-7 md:w-10 md:h-10 rounded-full border text-center"
+            >
+              {{ ayah.numberInSurah }}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="id + 1 !== 1">
+  <div class="box mt-10 mb-5 px-5" *ngIf="selectedSurah">
+    <div
+      class="text-2xl text-sky-800 md:text-4xl leading-10 italic mb-5 flex items-center justify-center"
+    >
+      بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+    </div>
+    <div>
+      <div class="ayah italic" *ngIf="selectedSurah">
+        <div
+          class="inline"
+          *ngFor="let ayah of selectedSurah.ayahs; let i = index"
+        >
+          <p class="inline text-xl md:text-2xl">
+            {{ ayah.text }}
+            <span
+              class="inline-flex items-center justify-center w-7 h-7 md:w-10 md:h-10 rounded-full border text-center"
+            >
+              {{ ayah.numberInSurah }}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
