@@ -5,7 +5,7 @@
     </p>
   </div>
   <div class="info flex place-content-center mb-8">
-    <div class="name">
+    <div class="namee" *ngIf="selectedSurah">
       <h2 class="text-4xl font-bold tracking-tight text-sky-400 italic">
         {{ selectedSurah.name }}
         <span
@@ -16,58 +16,43 @@
     </div>
   </div>
 </div>
-<div *ngIf="id + 1 == 1">
-  <div class="box mt-10 mb-5 px-5" *ngIf="selectedSurah">
+<div class="content flex">
+  <div class="r w-[40%] md:w-[25%] bg-gray-900 md:px-5">
     <div
-      class="text-2xl text-sky-800 md:text-4xl leading-10 italic mb-5 flex items-center justify-center"
+      class="cursor-pointer text-sm mb-4 text-white md:p-10 border-2 border border-[#80caff] rounded-2xl shadow shadow-2xl transition-all duration-300 ease-in-out hover:text-black hover:scale-110 hover:bg-white"
+      *ngFor="let surah of surahsName; let i = index"
+      [ngClass]="{ active: i == selectedSurah.number - 1 }"
+      routerLink="/surah/{{ surah.englishName }}/{{ surah.number }}"
+      routerLinkActive="active"
     >
-      بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
-      <span
-        class="inline-flex items-center justify-center w-7 h-7 md:w-10 md:h-10 rounded-full border text-center"
-      >
-        1
-      </span>
-    </div>
-    <div>
-      <div class="ayah italic" *ngIf="selectedSurah">
-        <div
-          class="inline"
-          *ngFor="let ayah of selectedSurah.ayahs; let i = index"
-        >
-          <p class="inline text-xl md:text-2xl" *ngIf="i !== 0">
-            {{ ayah.text }}
-            <span
-              class="inline-flex items-center justify-center w-7 h-7 md:w-10 md:h-10 rounded-full border text-center"
-            >
-              {{ ayah.numberInSurah }}
-            </span>
-          </p>
-        </div>
+      <div class="flex items-center">
+        <h4 class="font-bold text-xl">{{ surah.number }}-</h4>
+        <h1 class="font-bold text-xl">{{ surah.name }}</h1>
       </div>
     </div>
   </div>
-</div>
-<div *ngIf="id + 1 !== 1">
-  <div class="box mt-10 mb-5 px-5" *ngIf="selectedSurah">
-    <div
-      class="text-2xl text-sky-800 md:text-4xl leading-10 italic mb-5 flex items-center justify-center"
-    >
-      بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
-    </div>
-    <div>
-      <div class="ayah italic" *ngIf="selectedSurah">
-        <div
-          class="inline"
-          *ngFor="let ayah of selectedSurah.ayahs; let i = index"
-        >
-          <p class="inline text-xl md:text-2xl">
-            {{ ayah.text }}
-            <span
-              class="inline-flex items-center justify-center w-7 h-7 md:w-10 md:h-10 rounded-full border text-center"
-            >
-              {{ ayah.numberInSurah }}
-            </span>
-          </p>
+  <div class="l w-[60%] md:w-[75%]">
+    <div class="box md:mt-10 md:mb-5 px-2 md:px-5" *ngIf="selectedSurah">
+      <div
+        class="text-xl text-sky-800 md:text-4xl leading-10 italic mb-5 flex items-center justify-center"
+      >
+        بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+      </div>
+      <div>
+        <div class="ayah italic" *ngIf="selectedSurah">
+          <div
+            class="inline"
+            *ngFor="let ayah of selectedSurah.ayahs; let i = index"
+          >
+            <p class="inline text-xl md:text-2xl">
+              {{ ayah.text }}
+              <span
+                class="inline-flex items-center justify-center w-7 h-7 md:w-10 md:h-10 rounded-full border text-center"
+              >
+                {{ ayah.numberInSurah }}
+              </span>
+            </p>
+          </div>
         </div>
       </div>
     </div>
