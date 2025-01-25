@@ -17,14 +17,11 @@ export class HomeComponent {
     this.GetDataService.getSurah().subscribe({
       next: (res) => {
         this.surahsName = res.data.surahs;
-        console.log(this.surahsName);
       },
       error(err) {
         console.error('Error:', err);
       },
     });
   }
-  clickedSurah(num: number) {
-    console.log(num);
-  }
+  
 }

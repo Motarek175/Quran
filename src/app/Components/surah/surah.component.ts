@@ -39,10 +39,8 @@ export class SurahComponent {
           if (state.includes('1')) {
             ayah.text = state.replace('1', '');
           }
-          console.log(state);
         }
 
-        // console.log(this.selectedSurah);
       },
       error: (error) => {
         console.log(error);
