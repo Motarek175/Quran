@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { GetDataService } from '../../get-data.service';
 import { CommonModule } from '@angular/common';
@@ -15,6 +15,8 @@ export class SurahComponent {
   selectedSurah: any;
   audio: any;
   isPlaying: boolean[] = [];
+  isSidebarOpen: boolean = false;
+  isScreenMd: boolean = false;
   constructor(
     private _ActivatedRoute: ActivatedRoute,
     private GetDataService: GetDataService
@@ -23,6 +25,7 @@ export class SurahComponent {
       this.id = parseInt(params.get('id')!);
       this.loadSurahData();
     });
+    this.updateScreenSize();
   }
   ngOnInit(): void {
     this.GetDataService.getSurah().subscribe({
@@ -34,6 +37,7 @@ export class SurahComponent {
         console.error(error);
       },
     });
+    this.updateScreenSize();
   }
   loadSurahData(): void {
     this.selectedSurah = this.surahsName[this.id - 1];
@@ -61,5 +65,15 @@ export class SurahComponent {
   pauseAudio(index: number) {
     this.audio.pause();
     this.isPlaying[index] = false;
+  }
+  @HostListener('window:resize', [])
+  updateScreenSize(): void {
+    this.isScreenMd = window.innerWidth >= 768; // md breakpoint
+    if (this.isScreenMd) {
+      this.isSidebarOpen = true;
+    }
+  }
+  toggleSidebar(): void {
+    this.isSidebarOpen = !this.isSidebarOpen;
   }
 }

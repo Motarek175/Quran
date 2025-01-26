@@ -16,54 +16,82 @@
     </div>
   </div>
 </div>
-<div class="content flex">
-  <div class="r w-[40] md:w-[20%] bg-gray-900 md:px-5">
-    <div
-      class="cursor-pointer mx-1 text-sm md:text-2xl mb-4 text-white md:p-2 border-2 border border-[#80caff] rounded-2xl shadow shadow-2xl transition-all duration-300 ease-in-out hover:text-black hover:scale-110 hover:bg-white"
-      *ngFor="let surah of surahsName; let i = index"
-      routerLink="/surah/{{ surah.englishName }}/{{ surah.number }}"
-      routerLinkActive="active"
-      #link="routerLinkActive"
+<div class="content flex relative">
+  <div class="r md:w-[20%]" [ngClass]="isSidebarOpen ? 'w-[30%]' : 'w-fit'">
+    <button
+      class="block md:hidden absolute -top-10 right-2 z-50 bg-gray-800 text-white p-2 rounded-full shadow-lg focus:outline-none"
+      (click)="toggleSidebar()"
     >
-      <div class="flex justify-between items-center relative">
-        <div class="right">
-          <h1 class="font-bold p-1">{{ surah.name }}</h1>
-        </div>
-        <div class="left flex items-center justify-center">
-          <button
-            *ngIf="!isPlaying[i]"
-            (click)="playAudio(i)"
-            [disabled]="!link.isActive"
-          >
-            <img
-              src="https://img.icons8.com/?size=100&id=398&format=png&color=000000"
-              alt="play audio"
-              width="20"
-              height="20"
-              class="cursor-pointer"
-            />
-          </button>
-          <button
-            *ngIf="isPlaying[i]"
-            (click)="pauseAudio(i)"
-            [disabled]="!link.isActive"
-          >
-            <img
-              src="https://img.icons8.com/?size=100&id=403&format=png&color=000000"
-              alt="play audio"
-              width="20"
-              height="20"
-              class="cursor-pointer"
-            />
-          </button>
+      <img
+        src="https://img.icons8.com/ios-filled/50/ffffff/menu--v1.png"
+        alt="Open Sidebar"
+        *ngIf="!isSidebarOpen"
+        width="24"
+        height="24"
+      />
+      <img
+        src="https://img.icons8.com/ios-filled/50/ffffff/multiply.png"
+        alt="Close Sidebar"
+        *ngIf="isSidebarOpen"
+        width="24"
+        height="24"
+      />
+    </button>
+    <div
+      class="bg-gray-900 hidden px-3"
+      [class.hidden]="!isSidebarOpen && !isScreenMd"
+      [class.block]="isSidebarOpen || isScreenMd"
+    >
+      <div
+        class="cursor-pointer text-sm md:text-2xl mb-4 text-white md:p-2 border-2 border border-[#80caff] rounded-2xl shadow shadow-2xl transition-all duration-300 ease-in-out hover:text-black hover:scale-110 hover:bg-white"
+        *ngFor="let surah of surahsName; let i = index"
+        routerLink="/surah/{{ surah.englishName }}/{{ surah.number }}"
+        routerLinkActive="active"
+        #link="routerLinkActive"
+      >
+        <div class="flex justify-between items-center relative px-">
+          <div class="right">
+            <h1 class="font-bold p-1">{{ surah.name }}</h1>
+          </div>
+          <div class="left flex items-center justify-center">
+            <button
+              *ngIf="!isPlaying[i]"
+              (click)="playAudio(i)"
+              [disabled]="!link.isActive"
+            >
+              <img
+                src="https://img.icons8.com/?size=100&id=398&format=png&color=000000"
+                alt="play audio"
+                width="20"
+                height="20"
+                class="cursor-pointer"
+              />
+            </button>
+            <button
+              *ngIf="isPlaying[i]"
+              (click)="pauseAudio(i)"
+              [disabled]="!link.isActive"
+            >
+              <img
+                src="https://img.icons8.com/?size=100&id=403&format=png&color=000000"
+                alt="play audio"
+                width="20"
+                height="20"
+                class="cursor-pointer"
+              />
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="l w-[60%] md:w-[80%]">
-    <div class="box md:mt-10 md:mb-5 ps-2 md:px-5" *ngIf="selectedSurah">
+  <div
+    class="l w-[70%] md:w-[80%]"
+    [class.w-fit]="!isSidebarOpen && !isScreenMd"
+  >
+    <div class="box md:mt-10 md:mb-5 p-2 md:px-5" *ngIf="selectedSurah">
       <div
-        class="text-xl text-sky-800 md:text-4xl leading-10 italic mb-0 md:mb-5 flex items-center justify-center"
+        class="text-2xl text-sky-800 md:text-4xl leading-10 italic mb-0 md:mb-5 flex items-center justify-center"
       >
         بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
       </div>
@@ -73,7 +101,7 @@
             class="inline"
             *ngFor="let ayah of selectedSurah.ayahs; let i = index"
           >
-            <p class="inline text-xl md:text-2xl">
+            <p class="inline text-2xl md:text-3xl font-bold">
               {{ ayah.text }}
               <span
                 class="inline-flex items-center justify-center w-7 h-7 md:w-10 md:h-10 rounded-full border text-center"
