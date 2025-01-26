@@ -17,7 +17,7 @@
   </div>
 </div>
 <div class="content flex relative">
-  <div class="r md:w-[20%]" [ngClass]="isSidebarOpen ? 'w-[30%]' : 'w-fit'">
+  <div class="r md:w-[20%]" [ngClass]="isSidebarOpen ? 'w-[35%]' : 'w-fit'">
     <button
       class="block md:hidden absolute -top-10 right-2 z-50 bg-gray-800 text-white p-2 rounded-full shadow-lg focus:outline-none"
       (click)="toggleSidebar()"
@@ -86,12 +86,13 @@
     </div>
   </div>
   <div
-    class="l w-[70%] md:w-[80%]"
+    class="l w-[65%] md:w-[80%]"
     [class.w-fit]="!isSidebarOpen && !isScreenMd"
   >
     <div class="box md:mt-10 md:mb-5 p-2 md:px-5" *ngIf="selectedSurah">
       <div
         class="text-2xl text-sky-800 md:text-4xl leading-10 italic mb-0 md:mb-5 flex items-center justify-center"
+        *ngIf="id !== 9"
       >
         بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
       </div>
