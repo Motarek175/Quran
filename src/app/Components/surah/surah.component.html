@@ -19,14 +19,44 @@
 <div class="content flex">
   <div class="r w-[40] md:w-[20%] bg-gray-900 md:px-5">
     <div
-      class="cursor-pointer mx-1 text-sm md:text-2xl mb-4 text-white md:p-4 border-2 border border-[#80caff] rounded-2xl shadow shadow-2xl transition-all duration-300 ease-in-out hover:text-black hover:scale-110 hover:bg-white"
+      class="cursor-pointer mx-1 text-sm md:text-2xl mb-4 text-white md:p-2 border-2 border border-[#80caff] rounded-2xl shadow shadow-2xl transition-all duration-300 ease-in-out hover:text-black hover:scale-110 hover:bg-white"
       *ngFor="let surah of surahsName; let i = index"
-      [ngClass]="{ active: i == selectedSurah.number - 1 }"
       routerLink="/surah/{{ surah.englishName }}/{{ surah.number }}"
       routerLinkActive="active"
+      #link="routerLinkActive"
     >
-      <div class="flex items-center w-fit">
-        <h1 class="font-bold p-1">{{ surah.name }}</h1>
+      <div class="flex justify-between items-center relative">
+        <div class="right">
+          <h1 class="font-bold p-1">{{ surah.name }}</h1>
+        </div>
+        <div class="left flex items-center justify-center">
+          <button
+            *ngIf="!isPlaying[i]"
+            (click)="playAudio(i)"
+            [disabled]="!link.isActive"
+          >
+            <img
+              src="https://img.icons8.com/?size=100&id=398&format=png&color=000000"
+              alt="play audio"
+              width="20"
+              height="20"
+              class="cursor-pointer"
+            />
+          </button>
+          <button
+            *ngIf="isPlaying[i]"
+            (click)="pauseAudio(i)"
+            [disabled]="!link.isActive"
+          >
+            <img
+              src="https://img.icons8.com/?size=100&id=403&format=png&color=000000"
+              alt="play audio"
+              width="20"
+              height="20"
+              class="cursor-pointer"
+            />
+          </button>
+        </div>
       </div>
     </div>
   </div>
