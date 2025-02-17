@@ -68,7 +68,93 @@
 </div>
 
 <div
+  aria-label="Loading..."
+  role="status"
+  class="flex justify-center items-center space-x-2"
+  *ngIf="isLoading"
+>
+  <svg class="h-20 w-20 animate-spin stroke-gray-500" viewBox="0 0 256 256">
+    <line
+      x1="128"
+      y1="32"
+      x2="128"
+      y2="64"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="24"
+    ></line>
+    <line
+      x1="195.9"
+      y1="60.1"
+      x2="173.3"
+      y2="82.7"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="24"
+    ></line>
+    <line
+      x1="224"
+      y1="128"
+      x2="192"
+      y2="128"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="24"
+    ></line>
+    <line
+      x1="195.9"
+      y1="195.9"
+      x2="173.3"
+      y2="173.3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="24"
+    ></line>
+    <line
+      x1="128"
+      y1="224"
+      x2="128"
+      y2="192"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="24"
+    ></line>
+    <line
+      x1="60.1"
+      y1="195.9"
+      x2="82.7"
+      y2="173.3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="24"
+    ></line>
+    <line
+      x1="32"
+      y1="128"
+      x2="64"
+      y2="128"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="24"
+    ></line>
+    <line
+      x1="60.1"
+      y1="60.1"
+      x2="82.7"
+      y2="82.7"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="24"
+    ></line>
+  </svg>
+  <span class="text-4xl font-medium text-gray-500"
+    >يرجي الانتظار يتم تحميل البيانات...</span
+  >
+</div>
+
+<div
   class="mt-10 mb-10 grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-10"
+  *ngIf="!isLoading"
 >
   <div
     class="cursor-pointer bg-gray-200 p-5 border-2 border border-[#80caff] rounded-2xl shadow shadow-2xl transition-all duration-300 ease-in-out hover:scale-110 hover:bg-white"
