@@ -1,0 +1,169 @@
+<div class="relative isolate overflow-hidden bg-gray-900 min-h-full">
+  <svg class="absolute inset-0 -z-10 h-full w-full" aria-hidden="true">
+    <rect
+      width="100%"
+      height="100%"
+      stroke-width="0"
+      fill="url(#983e3e4c-de6d-4c3f-8d64-b9761d1534cc)"
+    ></rect>
+  </svg>
+  <div
+    class="absolute left-[calc(50%-4rem)] top-10 -z-10 transform-gpu blur-3xl sm:left-[calc(50%-18rem)] lg:left-48 lg:top-[calc(50%-30rem)] xl:left-[calc(50%-24rem)]"
+    aria-hidden="true"
+  >
+    <div
+      class="aspect-[1108/632] w-[69.25rem] bg-gradient-to-r from-[#80caff] to-[#4f46e5] opacity-20"
+      style="
+        clip-path: polygon(
+          73.6% 51.7%,
+          91.7% 11.8%,
+          100% 46.4%,
+          97.4% 82.2%,
+          92.5% 84.9%,
+          75.7% 64%,
+          55.3% 47.5%,
+          46.5% 49.4%,
+          45% 62.9%,
+          50.3% 87.2%,
+          21.3% 64.1%,
+          0.1% 100%,
+          5.4% 51.1%,
+          21.4% 63.9%,
+          58.9% 0.2%,
+          73.6% 51.7%
+        );
+      "
+    ></div>
+  </div>
+  <div class="mt-[-50px] flex h-screen items-center justify-center">
+    <div
+      class="max-w-full flex items-center flex-col md:flex-row justify-center flex-shrink-0 gap-5 text-center lg:mx-0 lg:max-w-3xl lg:pt-8"
+    >
+      <div class="text">
+        <h1
+          class="mt-10 flex gap-5 text-5xl font-bold tracking-tight text-white sm:text-6xl"
+        >
+          <span class="text-sky-500">صدقة جارية على روح والدى</span>
+        </h1>
+        <p class="mt-6 text-2xl leading-8 text-gray-300">
+          نسألكم الدعاء فضلا وليس امرا
+        </p>
+      </div>
+      <div class="img">
+        <img
+          src="assets/imgs/Dad.jpg"
+          alt="Dad Image"
+          width="200"
+          height="200"
+          class="rounded-2xl"
+        />
+        <caption
+          class="flex text-sky-500 text-xl mt-3 font-bold justify-center"
+        >
+          طارق ابراهيم
+        </caption>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  aria-label="Loading..."
+  role="status"
+  class="flex justify-center items-center space-x-2"
+  *ngIf="isLoading"
+>
+  <svg class="h-20 w-20 animate-spin stroke-gray-500" viewBox="0 0 256 256">
+    <line
+      x1="128"
+      y1="32"
+      x2="128"
+      y2="64"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="24"
+    ></line>
+    <line
+      x1="195.9"
+      y1="60.1"
+      x2="173.3"
+      y2="82.7"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="24"
+    ></line>
+    <line
+      x1="224"
+      y1="128"
+      x2="192"
+      y2="128"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="24"
+    ></line>
+    <line
+      x1="195.9"
+      y1="195.9"
+      x2="173.3"
+      y2="173.3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="24"
+    ></line>
+    <line
+      x1="128"
+      y1="224"
+      x2="128"
+      y2="192"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="24"
+    ></line>
+    <line
+      x1="60.1"
+      y1="195.9"
+      x2="82.7"
+      y2="173.3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="24"
+    ></line>
+    <line
+      x1="32"
+      y1="128"
+      x2="64"
+      y2="128"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="24"
+    ></line>
+    <line
+      x1="60.1"
+      y1="60.1"
+      x2="82.7"
+      y2="82.7"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="24"
+    ></line>
+  </svg>
+  <span class="text-4xl font-medium text-gray-500"
+    >يرجي الانتظار يتم تحميل البيانات...</span
+  >
+</div>
+
+<div
+  class="mt-10 mb-10 grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-10"
+  *ngIf="!isLoading"
+>
+  <div
+    class="cursor-pointer bg-gray-200 p-5 border-2 border border-[#80caff] rounded-2xl shadow shadow-2xl transition-all duration-300 ease-in-out hover:scale-110 hover:bg-white"
+    *ngFor="let surah of surahsName; let i = index"
+    routerLink="surah/{{ surah.englishName }}/{{ surah.number }}"
+  >
+    <div class="flex items-center gap-0.5">
+      <h4 class="font-bold text-3xl">{{ surah.number }}-</h4>
+      <h1 class="font-bold text-3xl">{{ surah.name }}</h1>
+    </div>
+  </div>
+</div>

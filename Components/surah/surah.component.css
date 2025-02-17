@@ -1,0 +1,8 @@
+.ayah p {
+  line-height: 70px;
+}
+
+.active {
+  background-color: white;
+  color: black;
+}
